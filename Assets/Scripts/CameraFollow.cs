@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] Vector3 offSet = new Vector3(0.2f, 0.0f, -10f);
-    [SerializeField] float dampingTime = 0.3f;
-    [SerializeField] Vector3 velocity = Vector3.zero;
+    public Transform target;
+    public Vector3 offSet = new Vector3(0.2f, 0.0f, -10f);
+    public float dampingTime = 0.3f;
+    public Vector3 velocity = Vector3.zero;
+
+    // Calculo Score
+    public float startTime;
+    public float journeyLength;
+    public GameObject newTarget;
 
     private void Awake()
     {
@@ -16,7 +21,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(this.transform.position, newTarget.transform.position);
     }
 
     private void Update()
